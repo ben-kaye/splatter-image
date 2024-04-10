@@ -22,8 +22,10 @@ from .dataset_readers import readCamerasFromNpy
 from utils.general_utils import matrix_to_quaternion
 from utils.graphics_utils import getWorld2View2, getProjectionMatrix, getView2World, fov2focal
 
-CO3D_DATASET_ROOT = None # Change this to where you saved preprocessed data
-assert CO3D_DATASET_ROOT is not None, "Update the location of the CO3D Dataset"
+import yaml
+mod_dir = os.path.dirname(os.path.realpath(__file__))
+CO3D_DATASET_ROOT = yaml.safe_load(open(f'{mod_dir}/../env.yaml', 'r'))['co3d_source_dir']
+assert CO3D_DATASET_ROOT is not None, "Update the location of the CO3D Dataset in ./env.yaml"
 
 class CO3DDataset(Dataset):
     def __init__(self, cfg,
