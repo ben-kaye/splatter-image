@@ -19,10 +19,10 @@ class SRNDataset(Dataset):
         self.cfg = cfg
         self.dataset_name = dataset_name
 
-        self.base_path = os.path.join(SHAPENET_DATASET_ROOT, "srn_{}/{}_{}".format(cfg.data.category,
-                                                                              cfg.data.category,
-                                                                              cfg.data.category,
-                                                                              dataset_name))
+        self.base_path = os.path.join(
+            SHAPENET_DATASET_ROOT,
+            f'srn_{cfg.data.category}/{cfg.data.category}_{dataset_name}'
+        )
 
         is_chair = "chair" in cfg.data.category
         if is_chair and dataset_name == "train":
