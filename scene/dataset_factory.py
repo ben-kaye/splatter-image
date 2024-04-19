@@ -3,11 +3,11 @@ srn_failed, co3d_failed = False, False
 
 try:
     from .srn import SRNDataset
-except AssertionError as e:
+except ImportError as e:
     srn_failed = True
 try:
     from .co3d import CO3DDataset
-except AssertionError as e:
+except ImportError as e:
     co3d_failed = True
 
 def get_dataset(cfg, name):
